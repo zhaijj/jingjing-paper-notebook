@@ -36,3 +36,10 @@ When the user invokes this skill, follow these exact steps:
 *   **Core Contribution:** [Brief description of the methodology]
 *   **Links:** [Abstract Page](https://arxiv.org/abs/xxxx.xxxxx) | [PDF Direct Download](https://arxiv.org/pdf/xxxx.xxxxx)
 ```
+
+## Step 5 — Offer to Add to Notebook
+After presenting the results, always ask:
+
+> "Would you like to add any of these to your paper notebook website? Reply with the numbers (e.g. **1, 3**), **all**, or **none**."
+
+Then follow the **Add to Notebook** skill (`.agents/skills/add_to_notebook/SKILL.md`) to handle selection, schema building, and automatic commit + push to GitHub.

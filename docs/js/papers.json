@@ -1,29 +1,29 @@
 [
-    {
-        "id": "zhou2024maize",
-        "title": "A pan-genome reference of diverse maize lines reveals transposable element dynamics and their impact on gene regulation",
-        "authors": [
-            "Yujin Zhou",
-            "Jingjing Zhai",
-            "Michael C. Schatz",
-            "Edward S. Buckler"
-        ],
-        "journal": "Nature Plants",
-        "journalSlug": "nature-plants",
-        "year": 2024,
-        "doi": "10.1038/s41477-024-01234-5",
-        "tags": [
-            "pan-genome",
-            "maize",
-            "transposable elements",
-            "gene regulation",
-            "genomics"
-        ],
-        "rating": 5,
-        "abstract": "Maize (Zea mays L.) displays extraordinary genetic diversity, yet existing reference genomes capture only a fraction of the total genomic variation present across diverse inbred lines. Here we present a pan-genome assembly of 26 diverse maize inbreds, including lines from temperate, tropical, and popcorn backgrounds, spanning over 6.5 Gb of non-redundant sequence. We characterized the dynamic landscape of transposable elements (TEs) across genomes, identifying over 1.2 million TE insertions that are absent from the B73 reference. Using ATAC-seq and RNA-seq across matched genotypes, we show that presence/absence variation of TEs within 2 kb of gene bodies is significantly associated with differential chromatin accessibility (P < 0.001) and altered gene expression levels. Notably, LTR retrotransposons contributed disproportionately to regulatory variation, with Gypsy-family elements enriched near stress-responsive genes. Our results reveal that TE polymorphisms represent a major, previously underappreciated source of cis-regulatory variation in maize and provide a powerful resource for dissecting the genetic basis of complex agronomic traits.",
-        "notes": "## Key Findings\n\n- **Pan-genome scale**: Assembled 26 diverse maize inbreds → identified 1.2M novel TE insertions not in B73.\n- **TE-gene regulation link**: TEs within 2 kb of genes significantly alter chromatin accessibility and expression — very relevant for our DNA-LM work on functional elements.\n- **Gypsy LTRs near stress genes**: Suggests TE-mediated rewiring of stress response networks.\n\n## Relevance to Our Work\n\nThis paper is directly relevant to understanding non-coding regulatory variation in plant genomes. The TE insertion polymorphisms could be excellent test cases for DNA language models predicting regulatory impact. The multi-genome dataset also offers a rich training resource.\n\n## Methods Worth Noting\n\n- Used HiFi long reads + Hi-C for assembly\n- Pan-genome graph built with Minigraph-Cactus\n- TE annotation via EDTA v2.2\n- chromatin: ATAC-seq paired with RNA-seq across genotypes\n\n## Questions / Follow-ups\n\n- [ ] Are the raw assemblies available on NCBI? Check BioProject.\n- [ ] Can we apply Evo2 or Caduceus to these TE flanking sequences to predict accessibility?\n- [ ] How does TE polymorphism impact flowering time loci specifically?",
-        "imageCaption": "Pan-genome graph showing TE insertion polymorphisms across 26 maize inbreds",
-        "addedDate": "2026-03-01",
-        "source": "Nature Plants"
-    }
+  {
+    "id": "zhou2024maize",
+    "title": "A pan-genome reference of diverse maize lines reveals transposable element dynamics and their impact on gene regulation",
+    "authors": [
+      "Yujin Zhou",
+      "Jingjing Zhai",
+      "Michael C. Schatz",
+      "Edward S. Buckler"
+    ],
+    "journal": "Nature Plants",
+    "journalSlug": "nature-plants",
+    "year": 2024,
+    "doi": "10.1038/s41477-024-01234-5",
+    "tags": [
+      "pan-genome",
+      "maize",
+      "transposable elements",
+      "gene regulation",
+      "genomics"
+    ],
+    "rating": 5,
+    "abstract": "Maize (Zea mays L.) displays extraordinary genetic diversity, yet existing reference genomes capture only a fraction of the total genomic variation present across diverse inbred lines. Here we present a pan-genome assembly of 26 diverse maize inbreds, including lines from temperate, tropical, and popcorn backgrounds, spanning over 6.5 Gb of non-redundant sequence. We characterized the dynamic landscape of transposable elements (TEs) across genomes, identifying over 1.2 million TE insertions that are absent from the B73 reference. Using ATAC-seq and RNA-seq across matched genotypes, we show that presence/absence variation of TEs within 2 kb of gene bodies is significantly associated with differential chromatin accessibility (P < 0.001) and altered gene expression levels. Notably, LTR retrotransposons contributed disproportionately to regulatory variation, with Gypsy-family elements enriched near stress-responsive genes. Our results reveal that TE polymorphisms represent a major, previously underappreciated source of cis-regulatory variation in maize and provide a powerful resource for dissecting the genetic basis of complex agronomic traits.",
+    "notes": "## Key Findings\n\n- **Pan-genome scale**: Assembled 26 diverse maize inbreds → identified 1.2M novel TE insertions not in B73.\n- **TE-gene regulation link**: TEs within 2 kb of genes significantly alter chromatin accessibility and expression — very relevant for our DNA-LM work on functional elements.\n- **Gypsy LTRs near stress genes**: Suggests TE-mediated rewiring of stress response networks.\n\n## Relevance to Our Work\n\nThis paper is directly relevant to understanding non-coding regulatory variation in plant genomes. The TE insertion polymorphisms could be excellent test cases for DNA language models predicting regulatory impact. The multi-genome dataset also offers a rich training resource.\n\n## Methods Worth Noting\n\n- Used HiFi long reads + Hi-C for assembly\n- Pan-genome graph built with Minigraph-Cactus\n- TE annotation via EDTA v2.2\n- chromatin: ATAC-seq paired with RNA-seq across genotypes\n\n## Questions / Follow-ups\n\n- [ ] Are the raw assemblies available on NCBI? Check BioProject.\n- [ ] Can we apply Evo2 or Caduceus to these TE flanking sequences to predict accessibility?\n- [ ] How does TE polymorphism impact flowering time loci specifically?",
+    "imageCaption": "Pan-genome graph showing TE insertion polymorphisms across 26 maize inbreds",
+    "addedDate": "2026-03-01",
+    "source": "Nature Plants"
+  }
 ]

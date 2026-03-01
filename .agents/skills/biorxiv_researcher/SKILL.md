@@ -45,3 +45,10 @@ When the user invokes this skill, follow these exact steps:
 *   **Relevance:** [1 sentence explaining why it aligns with plant genomics, evolution, or biological AI]
 *   **Links:** [Abstract Page](https://www.biorxiv.org/content/xxxx) | [PDF Direct Download](https://www.biorxiv.org/content/xxxx.full.pdf)
 ```
+
+## Step 5 — Offer to Add to Notebook
+After presenting the results, always ask:
+
+> "Would you like to add any of these to your paper notebook website? Reply with the numbers (e.g. **1, 3**), **all**, or **none**."
+
+Then follow the **Add to Notebook** skill (`.agents/skills/add_to_notebook/SKILL.md`) to handle selection, schema building, and automatic commit + push to GitHub.
