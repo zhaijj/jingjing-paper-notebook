@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jingjing's Paper Notebook</title>
+  <meta name="description" content="A curated notebook of paper notes and abstracts from top journals in plant genomics, DNA language models, and AI — by Jingjing Zhai." />
+  <meta property="og:title" content="Jingjing's Paper Notebook" />
+  <meta property="og:description" content="Curated paper notes from Nature Plants, bioRxiv, PNAS, and more." />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📚</text></svg>" />
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar">
+    <div class="container navbar-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon">📚</div>
+        <div>
+          <span class="logo-text">Paper Notebook</span>
+          <span class="logo-sub">Jingjing Zhai · Buckler Lab</span>
+        </div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="index.html">Home</a></li>
+        <li><a href="https://github.com/zhaijj/jingjing-paper-notebook" target="_blank">GitHub</a></li>
+        <li><span class="nav-count" id="nav-count">— papers</span></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header class="hero">
+    <div class="container">
+      <div class="hero-eyebrow">
+        🌱 Plant Genomics · DNA Language Models · AI
+      </div>
+      <h1>My Reading Notes &amp; Paper Abstracts</h1>
+      <p>A personal, searchable library of papers I've read — with highlights, notes, and key takeaways from top journals.</p>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-number" id="stat-count">—</span>
+          <span class="stat-label">Papers</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="stat-journals">—</span>
+          <span class="stat-label">Journals</span>
+        </div>
+        <div class="stat">
+          <span class="stat-number" id="stat-year">—</span>
+          <span class="stat-label">Latest Year</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <div class="container">
+
+      <!-- CONTROLS -->
+      <div class="controls">
+        <!-- Search -->
+        <div class="search-wrap">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+          </svg>
+          <input
+            id="search-input"
+            class="search-input"
+            type="search"
+            placeholder="Search by title, author, or keyword…"
+            aria-label="Search papers"
+          />
+        </div>
+        <!-- Journal chips -->
+        <div class="filter-group" id="journal-filters">
+          <!-- Populated by app.js -->
+        </div>
+      </div>
+
+      <!-- PAPER GRID -->
+      <div class="papers-grid" id="papers-grid">
+        <!-- Loading state -->
+        <div class="no-results">
+          <p style="color: var(--text-dim);">Loading papers…</p>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <p>
+        Maintained by <a href="https://github.com/zhaijj" target="_blank">Jingjing Zhai</a> ·
+        <a href="https://github.com/bucklerlab" target="_blank">Buckler Lab</a> ·
+        Built with 💚 and plain HTML
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/app.js"></script>
+  <script>
+    // Update nav count once papers load
+    const observer = new MutationObserver(() => {
+      const count = document.getElementById('stat-count');
+      const nav = document.getElementById('nav-count');
+      if (count && nav && count.textContent !== '—') {
+        nav.textContent = count.textContent + ' papers';
+      }
+    });
+    const statEl = document.getElementById('stat-count');
+    if (statEl) observer.observe(statEl, { childList: true, characterData: true, subtree: true });
+  </script>
+
+</body>
+</html>

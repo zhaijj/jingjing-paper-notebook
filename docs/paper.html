@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paper Detail | Jingjing's Paper Notebook</title>
+    <meta name="description" content="Paper notes and abstract." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📄</text></svg>" />
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📚</div>
+                <div>
+                    <span class="logo-text">Paper Notebook</span>
+                    <span class="logo-sub">Jingjing Zhai · Buckler Lab</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">← All Papers</a></li>
+                <li><a href="https://github.com/zhaijj/jingjing-paper-notebook" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+
+        <!-- PAPER HERO -->
+        <div class="paper-hero">
+            <div class="container">
+
+                <a href="index.html" class="back-link">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="2.5">
+                        <path d="m15 18-6-6 6-6" />
+                    </svg>
+                    Back to all papers
+                </a>
+
+                <!-- Color accent bar -->
+                <div id="paper-color-bar" style="height:3px; border-radius:2px; margin:24px 0 20px; max-width:200px;">
+                </div>
+
+                <!-- Meta row: journal + year -->
+                <div class="paper-meta-row">
+                    <span id="paper-journal-badge"></span>
+                    <span id="paper-year"></span>
+                    <div class="star-rating" id="paper-stars"></div>
+                </div>
+
+                <!-- Title -->
+                <h1 class="paper-title" id="paper-title">Loading…</h1>
+
+                <!-- Authors -->
+                <p class="paper-authors" id="paper-authors"></p>
+
+                <!-- Action buttons -->
+                <div class="paper-links">
+                    <a id="btn-doi" href="#" target="_blank" class="btn btn-primary">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                            <polyline points="15 3 21 3 21 9" />
+                            <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                        Open DOI
+                    </a>
+                    <a href="index.html" class="btn btn-outline">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2">
+                            <path d="m15 18-6-6 6-6" />
+                        </svg>
+                        All Papers
+                    </a>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PAPER CONTENT -->
+        <div class="container">
+            <div class="paper-content">
+
+                <!-- MAIN COLUMN -->
+                <div class="content-main">
+
+                    <!-- Abstract -->
+                    <div class="section-card">
+                        <div class="section-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                                <polyline points="14 2 14 8 20 8" />
+                            </svg>
+                            Abstract
+                        </div>
+                        <p class="abstract-text" id="paper-abstract"></p>
+                    </div>
+
+                    <!-- Notes -->
+                    <div class="section-card">
+                        <div class="section-label">
+                            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2.5">
+                                <path d="M12 20h9" />
+                                <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z" />
+                            </svg>
+                            My Notes
+                        </div>
+                        <div class="notes-content" id="paper-notes"></div>
+                    </div>
+
+                </div>
+
+                <!-- SIDEBAR -->
+                <div class="content-side">
+
+                    <!-- Info card -->
+                    <div class="section-card">
+                        <div class="section-label">Info</div>
+                        <div class="info-row"><span class="info-key">Journal</span><span class="info-val"
+                                id="info-journal"></span></div>
+                        <div class="info-row"><span class="info-key">Year</span><span class="info-val"
+                                id="info-year"></span></div>
+                        <div class="info-row"><span class="info-key">Rating</span><span class="info-val"
+                                id="info-rating"></span></div>
+                        <div class="info-row"><span class="info-key">DOI</span><span class="info-val"
+                                id="info-doi"></span></div>
+                        <div class="info-row"><span class="info-key">Added</span><span class="info-val"
+                                id="info-added"></span></div>
+                    </div>
+
+                    <!-- Tags card -->
+                    <div class="section-card">
+                        <div class="section-label">Tags</div>
+                        <div class="tags-cloud" id="paper-tags-cloud"></div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                Maintained by <a href="https://github.com/zhaijj" target="_blank">Jingjing Zhai</a> ·
+                <a href="https://github.com/bucklerlab" target="_blank">Buckler Lab</a> ·
+                Built with 💚 and plain HTML
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/paper.js"></script>
+
+</body>
+
+</html>
