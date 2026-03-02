@@ -53,11 +53,18 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function getBasePath() {
-    // If on GitHub Pages, path includes /jingjing-paper-notebook/
-    const path = window.location.pathname;
-    if (path.includes('/jingjing-paper-notebook/')) {
-        return '/jingjing-paper-notebook/docs';
+    // If on GitHub Pages
+    if (window.location.hostname === 'zhaijj.github.io') {
+        return '/jingjing-paper-notebook';
     }
+
+    // For local file:/// viewing, we need the path up to /docs
+    const path = window.location.pathname;
+    if (path.includes('/docs/')) {
+        return path.substring(0, path.indexOf('/docs/') + 5);
+    }
+
+    return '.';
     return '.';
 }
 

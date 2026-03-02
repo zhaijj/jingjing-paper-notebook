@@ -24,8 +24,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function getBasePath() {
+    if (window.location.hostname === 'zhaijj.github.io') return '/jingjing-paper-notebook';
     const path = window.location.pathname;
-    if (path.includes('/jingjing-paper-notebook/')) return '/jingjing-paper-notebook/docs';
+    if (path.includes('/docs/')) return path.substring(0, path.indexOf('/docs/') + 5);
     return '.';
 }
 
