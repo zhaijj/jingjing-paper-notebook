@@ -127,7 +127,18 @@ Write the response to `/tmp/nlm_notes.md`.
 
 ---
 
-### Step 5 — Link the notebook to the paper
+### Step 5 — Request User Review (Critical Step)
+
+**STOP.** Before proceeding any further, you must use the `notify_user` tool. Provide the absolute path `/tmp/nlm_notes.md` to the user and instruct them to:
+1. Open the file in their editor.
+2. Review and edit the markdown notes to their liking.
+3. Save the file and confirm in the chat that they are ready to proceed.
+
+Do not move to the next step until the user explicitly confirms the notes are ready.
+
+---
+
+### Step 6 — Link the notebook to the paper
 
 Run:
 ```bash
@@ -140,10 +151,10 @@ python3 .agents/skills/link_notebooklm/scripts/update_notebooklm.py \
 
 ---
 
-### Step 6 — Commit and push
+### Step 7 — Commit and push
 
 ```bash
-cd /Users/zhaijj/Documents/00PostDoc/Buckler_lab/GitHub/jingjing-paper-notebook
+cd /Users/zhaijj/Documents/00PostDoc/Buckler_lab/GitHub/paper-notebook
 git add docs/js/papers.json
 git commit -m "feat: link NotebookLM notes to {paper_id}"
 git push origin main
@@ -151,7 +162,7 @@ git push origin main
 
 ---
 
-### Step 7 — Confirm to user
+### Step 8 — Confirm to user
 
 Report back:
 - Whether a new paper was created or an existing one was updated
