@@ -25,13 +25,13 @@ KNOWN_JOURNALS = {
 }
 
 TAG_ALIASES = {
-    "maize": "maize",
-    "foundation model": "machine learning",
-    "llm agents": "machine learning",
-    "deep learning": "machine learning",
-    "artificial intelligence": "machine learning",
-    "ai agents": "machine learning",
-    "ai design": "machine learning"
+    "maize": ["maize"],
+    "foundation model": ["machine learning", "foundation model"],
+    "llm agents": ["machine learning", "LLM agents"],
+    "deep learning": ["machine learning", "deep learning"],
+    "artificial intelligence": ["machine learning"],
+    "ai agents": ["machine learning", "AI agents"],
+    "ai design": ["machine learning", "AI design"]
 }
 
 
@@ -69,7 +69,7 @@ def build_defaults(entry: dict) -> dict:
     for tag in raw_tags:
         lower_tag = tag.lower()
         if lower_tag in TAG_ALIASES:
-            normalized_tags.append(TAG_ALIASES[lower_tag])
+            normalized_tags.extend(TAG_ALIASES[lower_tag])
         else:
             normalized_tags.append(tag)
 
