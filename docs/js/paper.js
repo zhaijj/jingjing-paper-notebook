@@ -180,3 +180,45 @@ function showError(msg) {
       <a href="index.html" class="back-link" style="margin:24px auto 0;">← Back to Papers</a>
     </div>`;
 }
+
+// ── Utterances Comments ───────────────────────────────────────
+function initUtterances() {
+    const container = document.getElementById('utterances-container');
+    if (!container) return;
+
+    // Determine the current theme
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    const utterancesTheme = isDark ? 'github-dark' : 'github-light';
+
+    // Create script element
+    const script = document.createElement('script');
+    script.src = 'https://utteranc.es/client.js';
+    script.setAttribute('repo', 'zhaijj/jingjing-paper-notebook');
+    script.setAttribute('issue-term', 'title');
+    script.setAttribute('label', 'comment');
+    script.setAttribute('theme', utterancesTheme);
+    script.setAttribute('crossorigin', 'anonymous');
+    script.async = true;
+
+    container.appendChild(script);
+}
+
+// Listen for theme changes to reload Utterances
+document.getElementById('theme-toggle')?.addEventListener('click', () => {
+    // Give the theme change a tiny delay to apply to the document
+    setTimeout(() => {
+        const container = document.getElementById('utterances-container');
+        if (container && container.querySelector('.utterances')) {
+            // Clear existing comments iframe
+            container.innerHTML = '';
+            // Re-initialize with new theme
+            initUtterances();
+        }
+    }, 10);
+});
+
+// Initialize on first load
+document.addEventListener('DOMContentLoaded', () => {
+    // Other init stuff is in DOMContentLoaded at top, but we can just call it here
+    setTimeout(initUtterances, 500); // slight delay to ensure DOM is ready
+});
