@@ -12,7 +12,7 @@
     "doi": "10.64898/2025.12.11.693702",
     "tags": [
       "single-cell",
-      "foundation model",
+      "machine learning",
       "transcriptomics",
       "deep learning",
       "benchmarking",
@@ -54,7 +54,7 @@
     "doi": "10.1038/s41586-026-10142-1",
     "tags": [
       "Cold Resilience",
-      "Maize",
+      "maize",
       "E3 ligase",
       "Phosphate",
       "AI design"
@@ -66,5 +66,111 @@
     "source": "Nature",
     "notebooklm_url": "https://notebooklm.google.com/notebook/cffce505-b1ff-4386-be55-e8293641cda5",
     "notebooklm_notes": "# Personal Study Summary: Rewiring an E3 Ligase for Climate-Resilient Maize\n\n## 1. Key Findings and Main Contributions\n*   **Discovery of a Central Regulatory Hub:** The SPX-RING-type E3 ubiquitin ligase NITROGEN LIMITATION ADAPTATION (NLA) acts as a central node in maize that links cold signaling to inorganic phosphate (Pi) homeostasis. \n*   **The Nutrient-Stress Trade-off Mechanism:** Under cold stress, NLA performs a dual role. It enhances cold tolerance by ubiquitinating and degrading JAZ11 (a repressor of jasmonate signaling). Concurrently, it restricts Pi uptake by ubiquitinating and degrading the phosphate transporter PT4.\n*   **Natural Variation Identifies a Favorable Allele:** A ubiquitinome-informed Genome-Wide Association Study (GWAS) identified a natural variant of PT4 with a lysine-to-alanine substitution, PT4(K267A), which prevents NLA-mediated degradation and improves Pi uptake under cold conditions.\n*   **AI-Guided Rational Engineering:** Using structural predictions, researchers engineered a novel allele, $nla\\Delta12$, which deletes a 12-bp motif required for binding inositol polyphosphates (InsPs). This truncated variant loses the ability to degrade PT4 (thus maintaining Pi uptake) but continues to degrade JAZ11 (promoting cold resilience). \n*   **Agronomic Impact:** Field trials demonstrated that the $nla\\Delta12$ allele significantly improves cold tolerance, phosphorus use efficiency (PUE), and overall grain yield, effectively uncoupling the classic stress-resilience vs. nutrient-efficiency trade-off. \n\n## 2. Important Methodological Details\n*   **Multi-Omics Profiling:** Integrated transcriptomic (RNA-seq) and ubiquitinomic (enrichment of K-GG remnant motifs followed by LC-MS/MS) data to identify downstream targets of NLA during cold stress.\n*   **Genome-Wide Association Studies (GWAS):** Conducted on 192 diverse maize inbred lines to map SNPs associated with shoot P content under cold conditions, isolating the *PT4* locus. \n*   **Biochemical Assays:** Protein-protein interactions and stability were validated using yeast two-hybrid screens, in vitro pull-down, co-immunoprecipitation (co-IP), microscale thermophoresis (MST) for InsP binding affinity, and cell-free degradation assays.\n*   **AI-Assisted Structural Modeling:** AlphaFold3 was used to predict the NLA structure, and DiffDock-L was used to simulate InsP ligand docking, guiding the site-directed CRISPR-Cas9 mutagenesis of the SPX domain $\\alpha1$ and $\\alpha2$ helices to create $nla\\Delta12$.\n*   **Field Trials:** Multi-environment testing across climatically distinct locations utilizing normal, early, and late sowing regimes to evaluate survival and yield under realistic cold stress paradigms.\n\n## 3. My Personal Insights and Analysis Notes from this Notebook\n*   **Solving the Trade-off Bottleneck:** Historically, breeding for cold tolerance results in stunted growth due to repressed nutrient uptake. This study is profound because it achieves a \"have your cake and eat it too\" scenario by breaking the pleiotropy mechanically.\n*   **Spatial Redistribution as a Regulatory Mechanism:** Disrupting the NLA-PT4 interaction via the $nla\\Delta12$ mutation releases NLA from the plasma membrane, increasing the cytosolic pool available to interact with JAZ11, essentially amplifying the cold-tolerance response through spatial redistribution.\n*   **Harnessing Wild Ancestors:** The study notes that favorable *JAZ11* alleles conferring cold tolerance are highly enriched in teosinte (the wild ancestor of maize), underscoring the vital importance of utilizing wild relatives as reservoirs for adaptive traits.\n\n## 4. Open Questions or Follow-ups\n*   **[ ] Impact on Other Nutrient Transporters:** The ubiquitinome data suggests NLA also regulates potassium transporters (HAKs) and sugar transporters. How does the $nla\\Delta12$ mutation affect these other nutrient pathways, and does it broadly alter source-sink allocation?\n*   **[ ] Translational Potential:** Can this specific SPX domain-deletion strategy be directly applied to homologous SPX-RING ligases in other staple crops like rice and wheat?\n*   **[ ] Exploration of Natural NRT Variants:** The study suggests investigating natural variation in nitrate transporters (NRTs) that serve as NLA substrates to find more targets for crop improvement.\n\n## 5. Relevance to Plant Genomics / DNA Language Models / AI\n*   **From Discovery to Generative Genomics:** This study illustrates the transition to rationally designing genomic variations. AI (AlphaFold3 and DiffDock-L) was the critical bridge here; without structural models, determining exactly which 12 base pairs to delete while preserving E3 ligase function would have been nearly impossible.\n*   **Potential for DNA Language Models:** Future work could leverage DNA language models to predict how similar edits might affect regulatory modules without requiring complex downstream protein folding simulations. Models could scan for universally conserved SPX motifs and propose specific CRISPR targets to tune abiotic stress responses dynamically.\n*   **AI-Driven Trait Stacking:** The combination of an AI-engineered allele with a naturally discovered favorable allele produced synergistic improvements, highlighting how AI can accelerate modern breeding by predicting ideal combinations of natural variants and precision gene edits for climate resilience."
+  },
+  {
+    "id": "piri2026higher",
+    "title": "Higher order repeat structures reflect diverging evolutionary paths in maize centromeres and knobs",
+    "authors": [
+      "Rebecca D. Piri",
+      "Mingyu Wang",
+      "M. Cinta Romay",
+      "Edward S. Buckler",
+      "R. Kelly Dawe"
+    ],
+    "journal": "Genome Biology",
+    "year": 2026,
+    "doi": "10.1186/s13059-026-03993-4",
+    "tags": [
+      "maize",
+      "centromeres",
+      "knobs",
+      "satellite DNA",
+      "evolution"
+    ],
+    "rating": 3,
+    "abstract": "Highly repetitive tandem repeat arrays, known as satellite DNAs, are enriched in low-recombination regions such as centromeres. Satellite arrays often contain complex internal structures called higher-order repeats (HORs), which may have functional significance. Maize is unusual in that its satellites occur in two distinct genomic contexts: centromeres, which interact with kinetochore proteins, and knobs, which undergo meiotic drive in the presence of Abnormal chromosome 10. Whether maize centromeres or knobs contain HOR patterns, and how such patterns relate to function, remains unclear. Here, we generate 13 repeat-sensitive genome assemblies of maize and its recent ancestor, teosinte. We develop a new graph-based pipeline, HiReNET, to classify HORs and demonstrate its utility in both Arabidopsis and maize. We find that HORs are ubiquitous in maize satellites but are typically low-frequency with small patterns, unlike the large, continuous HOR blocks characteristic of human centromeres. Approximately 38% of centromeric CentC monomers occur in HORs; however, no specific HOR class dominates any functional centromere as marked by centromeric histone H3. Arabidopsis centromeres have a similar HOR landscape. In contrast, maize knobs exhibit a more structured HOR distribution. Large knobs contain megabase-scale similarity blocks with repeated HOR patterns. These repeat units likely promote unequal crossing over, enabling rapid knob expansion, and may harbor motifs recognized by trans-acting factors involved in meiotic drive. HORs occur in all major maize satellite arrays. Specific HORs are not associated with centromere function, but knobs contain conserved HOR patterns within similarity blocks that may facilitate meiotic drive.",
+    "notes": "## Key Findings\n\n- HORs are ubiquitous in maize satellites but typically low-frequency and small, unlike human centromeres.\n- Specific HORs do not dominate functional centromeres, but maize knobs have structured, megabase-scale HOR patterns.\n- Conserved HOR patterns in knobs likely promote unequal crossing over and may facilitate meiotic drive.\n\n## Relevance to Our Work\n\nThis is highly relevant to our focus on maize structural variation and evolutionary genetics, particularly shedding light on the function of highly repetitive satellite arrays.\n\n## Methods Worth Noting\n\n- De novo repeat-sensitive assembly of 13 maize and teosinte genomes (PacBio HiFi).\n- HiReNET: A new graph-based pipeline to classify HORs.\n\n## Questions / Follow-ups\n\n- [ ] Could DNA language models learn to identify these HOR patterns directly from raw sequence reads?\n- [ ] How do these repeat structures interact with methylation or other epigenetic marks?",
+    "addedDate": "2026-03-02",
+    "source": "Genome Biology"
+  },
+  {
+    "id": "wei2026integrating",
+    "title": "Integrating scRNA-seq and snRNA-seq with spatial transcriptomics to unlock the xylem puzzle",
+    "authors": [
+      "Mingke Wei",
+      "Jo-Wei Allison Hsieh",
+      "Jr-Fong Dang",
+      "Botong Tong",
+      "Hui Li",
+      "Ronald Sederoff",
+      "Ying-Chung Jimmy Lin",
+      "Quanzi Li"
+    ],
+    "journal": "Genome Biology",
+    "year": 2026,
+    "doi": "10.1186/s13059-026-04007-z",
+    "tags": [
+      "Populus",
+      "scRNA-seq",
+      "snRNA-seq",
+      "xylem development",
+      "spatial transcriptomics"
+    ],
+    "rating": 3,
+    "abstract": "Xylem development is a dynamic, continuous process fundamental to secondary growth in woody plants and to biomass accumulation on earth. While single-cell RNA sequencing (scRNA-seq) enables reconstruction of early xylem differentiation trajectories, its reliance on protoplast isolation excludes late-stage cells with thickened secondary cell walls, leaving key phases such as secondary cell wall deposition and programmed cell death poorly characterized. We perform single-nucleus RNA sequencing (snRNA-seq) of the stem-developing xylem of Populus and integrate previous scRNA-seq datasets to reconstruct a comprehensive developmental landscape of xylem formation. Anatomical validation confirms that scRNA-seq profiles predominantly represent early-stage stem-developing xylem, while snRNA-seq enriches for deeper, secondary cell wall depositing layers. Integrated analysis reveals a spatially and transcriptionally defined secondary cell wall zone, supported by both lignin autofluorescence and its correlation with laser capture microdissection-derived transcriptomes. Differential expression and gene ontology analyses uncover enrichment for lignin biosynthesis and programmed cell death associated genes, suggesting that secondary cell wall formation and programmed cell death initiation are transcriptionally coordinated. Unsupervised clustering and machine learning by support vector machine classification further reveal greater transcriptomic heterogeneity among early-stage xylem cells compared to late-stage cells. Our findings demonstrate the high compatibility and complementarity of scRNA-seq and snRNA-seq platforms. This integrated approach not only overcomes key limitations of individual technologies but also provides a practical and scalable framework for resolving complex developmental trajectories in plants. It successfully reconstructs the full continuum of xylem development, from cambial progenitors through secondary cell wall formation and to programmed cell death.",
+    "notes": "## Key Findings\n\n- Combines snRNA-seq and scRNA-seq to construct the full continuum of xylem development in Populus.\n- Demonstrates that snRNA-seq enriches for late-stage secondary cell wall depositing layers missed by scRNA-seq.\n- Reveals that secondary cell wall formation and programmed cell death initiation are transcriptionally coordinated.\n\n## Relevance to Our Work\n\nProvides a scalable framework for spatial and single-nucleus transcriptomics in woody plants, useful for models of plant development. Direct applications to integrating multi-omics layers.\n\n## Methods Worth Noting\n\n- Integration of scRNA-seq and snRNA-seq data.\n- Unsupervised clustering and support vector machine classification for transcriptomic heterogeneity.\n\n## Questions / Follow-ups\n\n- [ ] How can these integrated transcriptomic layers be used to train specialized DNA/RNA language models for crop species?",
+    "addedDate": "2026-03-02",
+    "source": "Genome Biology"
+  },
+  {
+    "id": "li2026fungiguard",
+    "title": "FungiGuard: identification of plant antifungal peptides with artificial intelligence",
+    "authors": [
+      "Xiang Li",
+      "Yitian Fang",
+      "You Wu",
+      "Xiang Yu"
+    ],
+    "journal": "Genome Biology",
+    "year": 2026,
+    "doi": "10.1186/s13059-026-03983-6",
+    "tags": [
+      "antifungal peptides",
+      "machine learning",
+      "plant defense",
+      "LSTM"
+    ],
+    "rating": 3,
+    "abstract": "Antifungal peptides (AFPs) are crucial for plant defense against biotic stress. Yet, no artificial intelligence tool specifically classifies plant AFPs. To fill this gap, we develop FungiGuard, which integrates Random Forest, Long Short-Term Memory, and attention mechanisms to identify AFPs using functionally annotated plant small peptides. FungiGuard outperforms existing generalized AFP model in classifying plant AFPs, and detects candidate AFPs in Arabidopsis, wheat, rice, and maize. It also discovers novel AFPs through randomly generated sequences. Experimental validation confirms the antifungal activity of candidate AFP against Botrytis cinerea. This tool deepens plant AFP understanding and facilitates novel AFP discovery.",
+    "notes": "## Key Findings\n\n- FungiGuard accurately identifies plant antifungal peptides (AFPs) from small peptide sequences.\n- Discovered candidate AFPs in Arabidopsis, wheat, rice, and maize.\n- Validated antifungal activity of new candidates experimentally against Botrytis cinerea.\n\n## Relevance to Our Work\n\nDirect application of AI/Deep Learning (LSTM, Attention) to identify functional plant peptides, aligning with our interest in AI in agriculture and plant genomics.\n\n## Methods Worth Noting\n\n- Ensemble model integrating Random Forest, LSTM, and attention mechanisms.\n- Trained on functionally annotated plant small peptides.\n\n## Questions / Follow-ups\n\n- [ ] Could our foundational DNA/protein language models zero-shot predict AFPs better than this supervised ensemble?",
+    "addedDate": "2026-03-02",
+    "source": "Genome Biology"
+  },
+  {
+    "id": "liu2026benchmarking",
+    "title": "Benchmarking LLM-based agents for single-cell omics analysis",
+    "authors": [
+      "Yang Liu",
+      "Lu Zhou",
+      "Xiawei Du",
+      "Ruikun He",
+      "Xuguang Zhang",
+      "Rongbo Shen",
+      "Yixue Li"
+    ],
+    "journal": "Genome Biology",
+    "year": 2026,
+    "doi": "10.1186/s13059-026-03998-z",
+    "tags": [
+      "single-cell",
+      "machine learning",
+      "benchmarking",
+      "bioinformatics"
+    ],
+    "rating": 3,
+    "abstract": "The surge in single-cell omics data exposes limitations in traditional, manually defined analysis workflows. AI agents offer a paradigm shift, enabling adaptive planning, executable code generation, traceable decisions, and real-time knowledge fusion. However, the lack of a comprehensive benchmark critically hinders progress. We introduce a novel benchmarking evaluation system to rigorously assess agent capabilities in single-cell omics analysis. This system comprises: a unified platform compatible with diverse agent frameworks and LLMs; multidimensional metrics assessing cognitive program synthesis, collaboration, execution efficiency, bioinformatics knowledge integration, and task completion quality; and 50 diverse real-world single-cell omics analysis tasks spanning multi-omics, species, and sequencing technologies. Our evaluation reveals that Grok3-beta achieves state-of-the-art performance among tested agent frameworks. Multi-agent frameworks significantly enhance collaboration and execution efficiency over single-agent approaches through specialized role division. Attribution analyses of agent capabilities identify that high-quality code generation is crucial for task success, and self-reflection has the most significant overall impact, followed by retrieval-augmented generation (RAG) and planning. This work highlights persistent challenges in code generation, long-context handling, and context-aware knowledge retrieval, providing a critical empirical foundation and best practices for developing robust AI agents in computational biology.",
+    "notes": "## Key Findings\n\n- Introduces an evaluation system of 50 real-world single-cell omics tasks to assess LLM agent capabilities.\n- Finds Multi-agent frameworks significantly outperform single-agent approaches.\n- Self-reflection, code generation quality, and RAG are the biggest drivers of agent success in computational biology.\n\n## Relevance to Our Work\n\nDirectly informs how we structure our own AI agents and autonomous research systems for analyzing complex genomics data.\n\n## Methods Worth Noting\n\n- 50 diverse multi-omics tasks span different species and sequencing technologies.\n- Quantitative metrics for program synthesis, execution efficiency, and domain knowledge integration.\n\n## Questions / Follow-ups\n\n- [ ] Should we build a similar benchmark for plant-specific genomics tasks?",
+    "addedDate": "2026-03-02",
+    "source": "Genome Biology"
   }
 ]

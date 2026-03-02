@@ -24,6 +24,16 @@ KNOWN_JOURNALS = {
     "Genome Biology", "PNAS", "bioRxiv", "MBE", "arXiv",
 }
 
+TAG_ALIASES = {
+    "maize": "maize",
+    "foundation model": "machine learning",
+    "llm agents": "machine learning",
+    "deep learning": "machine learning",
+    "artificial intelligence": "machine learning",
+    "ai agents": "machine learning",
+    "ai design": "machine learning"
+}
+
 
 def load_json(path: Path) -> list:
     if not path.exists():
@@ -53,7 +63,24 @@ def build_defaults(entry: dict) -> dict:
     """Fill in optional fields with sensible defaults."""
     today = date.today().isoformat()
     entry.setdefault("doi", "")
-    entry.setdefault("tags", [])
+    
+    raw_tags = entry.get("tags", [])
+    normalized_tags = []
+    for tag in raw_tags:
+        lower_tag = tag.lower()
+        if lower_tag in TAG_ALIASES:
+            normalized_tags.append(TAG_ALIASES[lower_tag])
+        else:
+            normalized_tags.append(tag)
+
+    seen = set()
+    deduped_tags = []
+    for t in normalized_tags:
+        if t.lower() not in seen:
+            deduped_tags.append(t)
+            seen.add(t.lower())
+    entry["tags"] = deduped_tags
+
     entry.setdefault("rating", 3)
     entry.setdefault("notes", "")
     entry.setdefault("addedDate", today)
