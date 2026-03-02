@@ -139,9 +139,13 @@ function filterPapers() {
         const journalMatch = activeJournal === 'all' || p.journal === activeJournal;
         const tagMatch = !activeTag || (p.tags && p.tags.includes(activeTag));
         const q = searchQuery;
+
+        // Handle authors as string or array
+        const authorsString = Array.isArray(p.authors) ? p.authors.join(' ') : (p.authors || '');
+
         const searchMatch = !q ||
             p.title.toLowerCase().includes(q) ||
-            (p.authors && p.authors.join(' ').toLowerCase().includes(q)) ||
+            authorsString.toLowerCase().includes(q) ||
             (p.tags && p.tags.join(' ').toLowerCase().includes(q)) ||
             (p.abstract && p.abstract.toLowerCase().includes(q));
         return journalMatch && tagMatch && searchMatch;
@@ -228,8 +232,12 @@ function renderCards() {
 // ── Helpers ───────────────────────────────────────────────────
 function formatAuthors(authors) {
     if (!authors || !authors.length) return '';
-    if (authors.length <= 3) return authors.join(', ');
-    return `${authors.slice(0, 3).join(', ')} et al.`;
+    if (typeof authors === 'string') return authors;
+    if (Array.isArray(authors)) {
+        if (authors.length <= 3) return authors.join(', ');
+        return `${authors.slice(0, 3).join(', ')} et al.`;
+    }
+    return '';
 }
 
 function renderStars(rating) {
