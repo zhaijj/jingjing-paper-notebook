@@ -218,5 +218,73 @@
     "notes": "## Key Findings\n\n- Developed Pichia-CLM, a GRU-based language model for codon optimization in *Komagataella phaffii*.\n- Outperformed commercial tools in enhancing heterologous protein production.\n- Demonstrated that the model learned meaningful physicochemical encodings for amino acids and codons without explicit supervision.\n\n## Relevance to Our Work\n\nThis paper is highly relevant to our interest in DNA language models as it demonstrates a practical application of sequence modeling for codon optimization. It shows how language models can learn species-specific genomic patterns better than traditional codon usage bias metrics.\n\n## Methods Worth Noting\n\n- Gated Recurrent Unit (GRU) based encoder-decoder architecture.\n- Bayesian hyperparameter optimization.\n- Experimental validation across six different proteins and comparison with four commercial tools.\n\n## Questions / Follow-ups\n\n- [ ] Could similar GRU-based architectures be efficient for plant-specific genomic sequence models compared to transformers?\n- [ ] How does the performance scale when designing constructs for larger, more complex multimeric proteins?",
     "addedDate": "2026-03-02",
     "source": "PNAS"
+  },
+  {
+    "id": "xu2026lumilab",
+    "title": "LUMI-lab: A foundation model-driven autonomous platform enabling discovery of ionizable lipid designs for mRNA delivery",
+    "authors": [
+      "Yue Xu",
+      "Haotian Cui",
+      "Kuan Pang",
+      "Gen Li",
+      "Fanglin Gong",
+      "Songtao Dong",
+      "Bo Wang",
+      "Bowen Li"
+    ],
+    "journal": "Cell",
+    "year": 2026,
+    "doi": "10.1016/j.cell.2026.01.012",
+    "tags": [
+      "machine learning",
+      "foundation model",
+      "self-driving lab",
+      "mRNA delivery",
+      "lipid nanoparticles",
+      "active learning",
+      "drug discovery"
+    ],
+    "rating": 4,
+    "abstract": "Integrating AI with robotics offers a promising approach to molecular discovery and optimization, enabling efficient exploration of vast chemical spaces. However, its application in emerging fields is often constrained by sparse historical data. Here, we introduce LUMI-lab, a self-driving platform that integrates a transformer-based foundation model with an active-learning experiment workflow to address the challenges of data scarcity. To demonstrate its potential, LUMI-lab autonomously synthesized and screened over 1,700 lipid nanoparticles (LNPs), identifying ionizable lipids with enhanced mRNA transfection potency in human bronchial cells. It discovered brominated lipid tails as a feature that improves mRNA delivery. Intratracheal administration of LNPs formulated with LUMI-6, the top-performing lipid, to mice achieved 20.3% gene editing efficacy in lung epithelial cells. These findings demonstrate LUMI-lab as a powerful, data-efficient platform for autonomous discovery and optimization of molecules, highlighting the potential of AI-driven robotic systems to advance next-generation RNA delivery technologies.",
+    "notes": "## Key Findings\n\n- LUMI-lab is a closed-loop, self-driving platform that combines a transformer-based foundation model with active learning to autonomously discover ionizable lipids for mRNA delivery\n- Screened over 1,700 lipid nanoparticles (LNPs) autonomously, identifying brominated lipid tails as a key structural motif for improved mRNA delivery\n- Top lipid (LUMI-6) achieved 20.3% gene editing efficiency in mouse lung epithelial cells via intratracheal delivery\n\n## Relevance to Our Work\n\nExcellent case study for AI-driven closed-loop biological discovery using foundation models. Directly analogous to how DNA/genomics language models can be deployed in active learning loops for sequence design tasks, demonstrating the power of transformer-based models in data-scarce regimes.\n\n## Methods Worth Noting\n\n- Transformer-based foundation model pre-trained on molecular data, fine-tuned via active learning\n- Iterative design-synthesize-test cycles with robotic automation (self-driving lab paradigm)\n- Contrastive molecular representation learning with graph neural networks\n\n## Questions / Follow-ups\n\n- [ ] How does the foundation model handle out-of-distribution lipid chemistries?\n- [ ] Could this active learning + foundation model loop be adapted for genomic sequence design (e.g., promoter or enhancer optimization)?",
+    "addedDate": "2026-03-02",
+    "source": "Cell"
+  },
+  {
+    "id": "malszycki2026nuclear",
+    "title": "Nuclear speckles enable processing of RNA from GC-rich isochores",
+    "authors": [
+      "Michał Małszycki",
+      "Lisa Martina",
+      "İbrahim Avşar Ilık",
+      "Daniela Salgado Figueroa",
+      "Nirmalya Dasgupta",
+      "Menşura Feray Çoşar",
+      "Keun-Tae Kim",
+      "Gil Carraco",
+      "Beatrix Fauler",
+      "David Meierhofer",
+      "Thorsten Mielke",
+      "Hiroo Imai",
+      "Cantaş Alev",
+      "Ferhat Ay",
+      "Tuğçe Aktaş"
+    ],
+    "journal": "Cell",
+    "year": 2026,
+    "doi": "10.1016/j.cell.2026.01.011",
+    "tags": [
+      "nuclear speckles",
+      "GC content",
+      "genome evolution",
+      "RNA splicing",
+      "isochores",
+      "biological condensates"
+    ],
+    "rating": 3,
+    "abstract": "Nuclear speckles are conserved, membrane-less organelles linked to various post-transcriptional processes. Here, we examined their roles in human cells by engineered, acute removal of SON and SRRM2, two conserved speckle core components characterized by intrinsically disordered regions (IDRs). Their removal results in a significant downregulation of GC-rich genes with short introns clustered within GC-rich isochores, caused by inefficient and chaotic splicing; in contrast, the expression or splicing of genes outside these isochores remains unaffected. Comparative analysis across eukaryotes, from fungi to mammals, reveals that both GC-rich isochores and speckles are found exclusively in amniotes; moreover, the IDRs of SON have undergone notable expansion in the latter. Together, these findings suggest that the expansion of IDRs in vertebrates facilitated an increase in GC content by creating a condensate essential for splicing the by-products of this process: GC-rich, leveled exon-intron architectures.",
+    "notes": "## Key Findings\n\n- Acute removal of nuclear speckle core components (SON and SRRM2) specifically disrupts splicing of GC-rich genes clustered in GC-rich isochores, not other genes\n- Both GC-rich isochores and nuclear speckles are exclusive to amniotes (reptiles, birds, mammals), suggesting co-evolution\n- IDR expansion in speckle proteins drove increased genome GC content during vertebrate evolution\n\n## Relevance to Our Work\n\nHighlights a fundamental link between genomic GC content and nuclear organization. Directly relevant to DNA language models, as GC content is a major sequence feature — this work reveals that GC-rich genomic regions have distinct regulatory logic that could create hidden biases or signals in sequence models trained on vertebrate genomes.\n\n## Methods Worth Noting\n\n- Engineered acute degron-based protein removal (auxin-inducible degron) of SON and SRRM2\n- Comparative genomics across eukaryotes (fungi to mammals) for isochore/speckle co-evolution analysis\n- RNA-seq, Hi-C, and alternative splicing quantification with rMATS-turbo and LeafCutter\n\n## Questions / Follow-ups\n\n- [ ] Do DNA language models trained on vertebrate genomes pick up on speckle-associated GC-rich isochore patterns?\n- [ ] Does plant genome organization have analogous nuclear structures linked to GC-rich regions?",
+    "addedDate": "2026-03-02",
+    "source": "Cell"
   }
 ]
