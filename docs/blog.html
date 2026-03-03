@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog | Jingjing's Paper Notebook</title>
+    <meta name="description"
+        content="Blog posts and thoughts by Jingjing Zhai on plant genomics, DNA language models, and AI." />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/blog.css" />
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>✍️</text></svg>" />
+    <!-- Apply saved theme immediately to prevent flash -->
+    <script>
+        (function () { var t = localStorage.getItem('pn-theme') || 'light'; document.documentElement.setAttribute('data-theme', t); })();
+    </script>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <div class="container navbar-inner">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">📚</div>
+                <div>
+                    <span class="logo-text">Paper Notebook</span>
+                    <span class="logo-sub">Jingjing Zhai</span>
+                </div>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html" class="nav-active">Blog</a></li>
+                <li><a href="https://github.com/zhaijj/paper-notebook" target="_blank">GitHub</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-toggle" aria-label="Switch to dark mode">
+                        <span class="toggle-icon">🌙</span>
+                        <span class="toggle-label">Dark</span>
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+        <div class="container">
+            <div class="hero-eyebrow">
+                ✍️ Thoughts · Tutorials · Research Notes
+            </div>
+            <h1>Blog</h1>
+            <p>1 post published on plant genomics, DNA language models, and AI.</p>
+        </div>
+    </header>
+
+    <main>
+        <div class="container" style="padding-top:2rem;padding-bottom:4rem;">
+            <!-- BLOG_POSTS_START -->
+            <div class="no-results" style="padding: 4rem 0; text-align: center;">
+                <p style="font-size: 3rem; margin-bottom: 1rem;">🚧</p>
+                <p style="font-size: 1.25rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem;">No posts yet
+                </p>
+                <p style="color: var(--text-dim);">Check back soon — blog posts are on the way!</p>
+            </div>
+            <!-- BLOG_POSTS_END -->
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <p>
+                Maintained by <a href="https://github.com/zhaijj" target="_blank">Jingjing Zhai</a> ·
+                Built with 💚 and plain HTML ·
+                <a href="https://github.com/zhaijj/paper-notebook" target="_blank">View on GitHub</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="js/theme.js"></script>
+
+</body>
+
+</html>
