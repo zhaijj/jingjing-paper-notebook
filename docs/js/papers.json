@@ -174,5 +174,53 @@
     "notes": "## Key Findings\n\n- Introduces an evaluation system of 50 real-world single-cell omics tasks to assess LLM agent capabilities.\n- Finds Multi-agent frameworks significantly outperform single-agent approaches.\n- Self-reflection, code generation quality, and RAG are the biggest drivers of agent success in computational biology.\n\n## Relevance to Our Work\n\nDirectly informs how we structure our own AI agents and autonomous research systems for analyzing complex genomics data.\n\n## Methods Worth Noting\n\n- 50 diverse multi-omics tasks span different species and sequencing technologies.\n- Quantitative metrics for program synthesis, execution efficiency, and domain knowledge integration.\n\n## Questions / Follow-ups\n\n- [ ] Should we build a similar benchmark for plant-specific genomics tasks?",
     "addedDate": "2026-03-02",
     "source": "Genome Biology"
+  },
+  {
+    "id": "mcinerney2026genomic",
+    "title": "Genomic perplexity and the evolution of context-dependent function",
+    "authors": [
+      "James O McInerney"
+    ],
+    "journal": "MBE",
+    "year": 2026,
+    "doi": "10.1093/molbev/msag041",
+    "tags": [
+      "evolution",
+      "context-dependent",
+      "genomic perplexity",
+      "language models"
+    ],
+    "rating": 3,
+    "abstract": "The fundamental principle that selection acts on a gene's function often assumes implicitly that this function is fixed and intrinsic. However, empirical evidence from pangenomics, synthetic biology, and GWAS consistently demonstrates that organismal function is highly context-dependent, varying across genomic backgrounds and cellular states, even for core genes. Drawing a conceptual framework from the language model concept of 'perplexity', we can quantify and model how genetic sequence context drives evolutionary function.",
+    "notes": "## Key Findings\n\n- Organismal function is highly context-dependent and varies across genomic backgrounds and cellular states.\n- The concept of 'perplexity' from language models can be used as a framework to quantify and model how genetic sequence context drives evolutionary function.\n- Challenges the assumption that a gene's function is fixed and intrinsic.\n\n## Relevance to Our Work\n\nHighly relevant to evaluating DNA Language Models and exploring how language modeling concepts like perplexity can be directly mapped to evolutionary biology and context-dependent gene function.\n\n## Methods Worth Noting\n\n- Linking NLP 'perplexity' concepts to genomic context.\n\n## Questions / Follow-ups\n\n- [ ] How does the author mathematically formulate genomic perplexity?\n- [ ] Can this perplexity metric be used directly as a fitness score in our own DNA foundation models?",
+    "addedDate": "2026-03-02",
+    "source": "MBE"
+  },
+  {
+    "id": "vijay2018population",
+    "title": "Population Genomic Analysis Reveals Contrasting Demographic Changes of Two Closely Related Dolphin Species in the Last Glacial",
+    "authors": [
+      "Nagarjun Vijay",
+      "Chungoo Park",
+      "Jooseong Oh",
+      "Soyeong Jin",
+      "Elizabeth Kern",
+      "Hyun Woo Kim",
+      "Jianzhi Zhang",
+      "Joong-Ki Park"
+    ],
+    "journal": "MBE",
+    "year": 2018,
+    "doi": "10.1093/molbev/msy108",
+    "tags": [
+      "population genomics",
+      "demography",
+      "evolution"
+    ],
+    "rating": 3,
+    "abstract": "Population genomic data can be used to infer historical effective population sizes (Ne), which help study the impact of past climate changes on biodiversity. We generated whole-genome sequences of the common bottlenose dolphin (Tursiops truncatus) and the Indo-Pacific bottlenose dolphin (T. aduncus) to compare their demographic histories. Despite being closely related, the two species exhibited contrasting demographic changes during the Last Glacial period.",
+    "notes": "## Key Findings\n\n- Used whole-genome sequences to infer historical effective population sizes (Ne).\n- Found contrasting demographic changes between two closely related dolphin species during the Last Glacial period.\n- Highlights how related species can have divergent evolutionary responses to the same climatic events.\n\n## Relevance to Our Work\n\nWhile focused on marine mammals, the demographic inference frameworks and population genomic methodologies used here are highly applicable to studying the demographic histories and evolutionary trajectories of plant species.\n\n## Methods Worth Noting\n\n- Estimation of historical effective population sizes (Ne) from whole-genome sequences.\n- Comparative demography of closely related species.\n\n## Questions / Follow-ups\n\n- [ ] What specific software pipelines (e.g., PSMC, MSMC) were used for demographic inference?\n- [ ] How did they handle phasing and structural variants in non-model organisms?",
+    "addedDate": "2026-03-02",
+    "source": "MBE"
   }
 ]
