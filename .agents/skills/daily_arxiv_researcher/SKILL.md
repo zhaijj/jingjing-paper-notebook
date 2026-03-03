@@ -1,6 +1,6 @@
 ---
 name: Daily ArXiv Researcher
-description: A research assistant that uses Firecrawl to monitor the arXiv CS.AI section and summarize the top 3 papers based on your interests.
+description: A research assistant that uses Firecrawl to monitor the arXiv CS.AI section and summarize all relevant papers based on your interests.
 ---
 
 # Daily ArXiv Researcher
@@ -18,9 +18,10 @@ When the user invokes this skill, follow these exact steps:
 1. **Scrape arXiv:** 
    Use the `firecrawl_scrape` tool to fetch the recent CS.AI listings from `https://arxiv.org/list/cs.AI/recent`. Request the output format as `markdown` and `onlyMainContent: true`.
 2. **Filter & Select:** 
-   Read the scraped markdown and identify the 3 most relevant papers based on the user's core research interests. Unless specified otherwise, assume the interests are: `genomic language model, computational biology, AI agent in biology`.
+   Read the scraped markdown and identify all relevant papers based on the user's core research interests. Unless specified otherwise, assume the interests are: `genomic language model, computational biology, AI agent in biology`.
+   - **RECENCY CONSTRAINT:** You MUST ONLY select papers from the most recent daily updates (i.e., submitted or updated within the last few days). Do not retrieve older papers.
 3. **Fetch Abstracts:** 
-   For each of the top 3 papers, use the `firecrawl_scrape` tool again to fetch its dedicated abstract page (e.g., `https://arxiv.org/abs/xxxx.xxxxx`). This ensures you get the full abstract text and contribution details.
+   For each relevant paper, use the `firecrawl_scrape` tool again to fetch its dedicated abstract page (e.g., `https://arxiv.org/abs/xxxx.xxxxx`). This ensures you get the full abstract text and contribution details.
 4. **Format Output:** 
    Present the final output using clear markdown headings and bullet points. For each paper, you MUST include:
    - The title and authors

@@ -24,12 +24,13 @@ When the user invokes this skill, follow these exact steps:
 1. **Scrape bioRxiv:** 
    Use the `firecrawl_scrape` tool to fetch the latest research preprints from the target sections on bioRxiv (e.g., `https://www.biorxiv.org/collection/bioinformatics`, `https://www.biorxiv.org/collection/genetics`, etc.).
 2. **Filter & Select:** 
-   Read the scraped content and identify the 5 most relevant papers based on the user's core research background. The core research interests to prioritize are:
+   Read the scraped content and identify all relevant papers based on the user's core research background. The core research interests to prioritize are:
    - **DNA/Biological Language Models (Foundation Models):** applications to genomics, cross-species analysis, evolution, and population genetics/genomics.
    - **Plant Genomics and Evolution:** crop genomics, regulatory elements, whole-genome duplication.
    - **AI/Deep Learning Methods in Biology:** novel architectures applied to bioinformatics, RNA-seq, and sequence modeling.
+   - **RECENCY CONSTRAINT:** You MUST ONLY select papers from the most recent daily updates (i.e., submitted or updated within the last few days). Do not retrieve older papers.
 3. **Fetch Abstracts:** 
-   For each of the top 5 papers, use the `firecrawl_scrape` tool to fetch its dedicated abstract page on bioRxiv to get the full abstract text and preprint link.
+   For each relevant paper, use the `firecrawl_scrape` tool to fetch its dedicated abstract page on bioRxiv to get the full abstract text and preprint link.
 4. **Format Output:** 
    Present the final output using clear markdown headings and bullet points. For each paper, you MUST include:
    - The Title and Authors

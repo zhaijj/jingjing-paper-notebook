@@ -21,12 +21,13 @@ When the user invokes this skill, follow these exact steps:
 1. **Scrape Journal Pages:** 
    Use the `firecrawl_scrape` tool (or `firecrawl_search`) to fetch the latest research articles, methods, and software from the Genome Biology journal.
 2. **Filter & Select:** 
-   Read the scraped content and identify the top 5 most relevant papers based on the user's core research background. The core research interests to prioritize are:
+   Read the scraped content and identify all relevant papers based on the user's core research background. The core research interests to prioritize are:
    - **DNA/Biological Language Models (Foundation Models):** applications to genomics, cross-species analysis, evolution, and population genetics/genomics.
    - **Plant Genomics and Evolution:** crop genomics, regulatory elements, whole-genome duplication.
    - **AI/Deep Learning Methods in Biology:** novel architectures applied to bioinformatics, RNA-seq, and sequence modeling.
+   - **RECENCY CONSTRAINT:** You MUST ONLY select papers from the most recent publication issue. Do not retrieve or select older papers from past years or previous issues. If using `firecrawl_search`, specifically query for the "latest issue" or current month/year to avoid retrieving older highly-cited papers.
 3. **Fetch Abstracts:** 
-   For each of the top 5 papers, use the `firecrawl_scrape` tool to fetch its dedicated abstract page on the Genome Biology website to get the full abstract text and DOI.
+   For each relevant paper, use the `firecrawl_scrape` tool to fetch its dedicated abstract page on the Genome Biology website to get the full abstract text and DOI.
 4. **Format Output:** 
    Present the final output using clear markdown headings and bullet points. For each paper, you MUST include:
    - The Journal Name, Title, and Authors
