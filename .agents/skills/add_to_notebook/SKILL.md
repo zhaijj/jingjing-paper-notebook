@@ -44,7 +44,7 @@ For each selected paper, use `firecrawl_scrape` to fetch its abstract page and f
 | `year`       | Integer year of publication/preprint |
 | `doi`        | DOI string only (without `https://doi.org/`) — if not available use `""` |
 | `tags`       | Array of 3-6 short keyword strings |
-| `rating`     | Default to `3` (user can update later) |
+| `rating`     | Evaluate the paper's relevance to the user's research interests from 1-5 and assign it an integer rating. 5 represents a critical, highly relevant paper. |
 | `abstract`   | Full abstract text as a single string |
 | `notes`      | AI-generated structured notes in the markdown template below |
 | `addedDate`  | Today's date as `YYYY-MM-DD` |
