@@ -13,6 +13,7 @@ Usage:
 import argparse
 import json
 import sys
+from datetime import date
 from pathlib import Path
 
 
@@ -83,6 +84,7 @@ def main():
     # Apply updates
     target["notebooklm_url"] = args.notebooklm_url
     target["notebooklm_notes"] = notes_text
+    target["updatedDate"] = date.today().isoformat()   # bubble to top on sort
 
     if args.dry_run:
         print(f"\n[dry-run] Would update '{args.paper_id}' with:")

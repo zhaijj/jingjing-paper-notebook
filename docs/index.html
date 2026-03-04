@@ -95,9 +95,18 @@
         <div class="sort-wrap">
           <label for="sort-select" class="sort-label">Sort by</label>
           <select id="sort-select" class="sort-select" aria-label="Sort papers">
-            <option value="newest">Newest Added</option>
+            <option value="newest">Newest Added/Updated</option>
             <option value="oldest">Oldest Added</option>
             <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+        <div class="sort-wrap">
+          <label for="limit-select" class="sort-label">Show top</label>
+          <select id="limit-select" class="sort-select" aria-label="Number of papers to show">
+            <option value="25">25</option>
+            <option value="50" selected>50</option>
+            <option value="100">100</option>
+            <option value="0">All</option>
           </select>
         </div>
       </div>

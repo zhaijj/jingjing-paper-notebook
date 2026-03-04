@@ -42,6 +42,7 @@ let activeTag = null;
 let searchQuery = '';
 let deepNotesOnly = false;
 let activeSort = 'newest'; // 'newest' | 'oldest' | 'rating'
+let displayLimit = 50;   // 25 | 50 | 100 | 0 (= all)
 
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
@@ -54,6 +55,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setupSearch();
     setupDeepNotesToggle();
     setupSortSelect();
+    setupDisplayLimit();
 });
 
 function getBasePath() {
@@ -160,20 +162,31 @@ function setupSortSelect() {
 }
 
 // ── Sort logic ────────────────────────────────────────────────
+// Effective date = max(updatedDate, addedDate) so that papers updated
+// (e.g. via NotebookLM linking) bubble to the top on "newest" sort.
+function effectiveDate(paper) {
+    const added = paper.addedDate
+        ? new Date(paper.addedDate).getTime()
+        : new Date(`${paper.year}-01-01`).getTime();
+    const updated = paper.updatedDate
+        ? new Date(paper.updatedDate).getTime()
+        : 0;
+    return Math.max(added, updated);
+}
+
 function sortPapers(papers) {
-    // Preserve original array index so we can use insertion order as a tiebreaker
+    // Preserve original array index as insertion-order tiebreaker
     const indexed = papers.map((p, i) => ({ p, i }));
     indexed.sort((a, b) => {
         if (activeSort === 'rating') {
             return (b.p.rating || 0) - (a.p.rating || 0);
         }
-        // Parse addedDate (YYYY-MM-DD) — fall back to year for papers without it
-        const dateA = a.p.addedDate ? new Date(a.p.addedDate).getTime() : new Date(`${a.p.year}-01-01`).getTime();
-        const dateB = b.p.addedDate ? new Date(b.p.addedDate).getTime() : new Date(`${b.p.year}-01-01`).getTime();
+        const dateA = effectiveDate(a.p);
+        const dateB = effectiveDate(b.p);
         if (dateA !== dateB) {
             return activeSort === 'oldest' ? dateA - dateB : dateB - dateA;
         }
-        // Same date: later array position = more recently added
+        // Same effective date: later array position = more recently added
         return activeSort === 'oldest' ? a.i - b.i : b.i - a.i;
     });
     return indexed.map(({ p }) => p);
@@ -200,6 +213,70 @@ function filterPapers() {
     });
 }
 
+// ── Build a single card DOM element ──────────────────────────
+function buildCard(paper, animIndex) {
+    const slug = JOURNAL_SLUGS[paper.journal] || 'default';
+    const accent = JOURNAL_ACCENTS[slug] || JOURNAL_ACCENTS.default;
+    const detailUrl = `paper.html?id=${paper.id}`;
+
+    const card = document.createElement('a');
+    card.className = 'paper-card';
+    card.href = detailUrl;
+    card.style.setProperty('--card-accent', accent);
+    card.style.setProperty('--accent-glow', hexToRgba(accent, 0.15));
+    card.style.animationDelay = `${animIndex * 0.05}s`;
+
+    const stars = renderStars(paper.rating || 0);
+    const tagsHtml = (paper.tags || []).slice(0, 3).map(t =>
+        `<span class="tag" data-tag="${t}">${t}</span>`
+    ).join('');
+
+    const nlmBadge = paper.notebooklm_url
+        ? `<a class="nlm-badge" href="${paper.notebooklm_url}" target="_blank" rel="noopener" title="Open in NotebookLM">📓 Deep Notes</a>`
+        : '';
+
+    card.innerHTML = `
+  <div class="card-header">
+    <span class="journal-badge journal-${slug}">${paper.journal}</span>
+    <span class="card-year">${paper.year}</span>
+  </div>
+  <h2 class="card-title">${paper.title}</h2>
+  <p class="card-authors">${formatAuthors(paper.authors)}</p>
+  <p class="card-abstract">${paper.abstract || ''}</p>
+  <div class="card-footer">
+    <div class="card-tags">${tagsHtml}</div>
+    <div class="card-footer-right">
+      ${nlmBadge}
+      <div class="star-rating">${stars}</div>
+    </div>
+  </div>`;
+
+    card.querySelectorAll('.tag').forEach(tagEl => {
+        tagEl.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            activeTag = activeTag === tagEl.dataset.tag ? null : tagEl.dataset.tag;
+            renderCards();
+        });
+    });
+
+    const badge = card.querySelector('.nlm-badge');
+    if (badge) badge.addEventListener('click', (e) => e.stopPropagation());
+
+    return card;
+}
+
+// ── Display Limit Select ──────────────────────────────────────
+function setupDisplayLimit() {
+    const sel = document.getElementById('limit-select');
+    if (!sel) return;
+    sel.value = String(displayLimit);
+    sel.addEventListener('change', (e) => {
+        displayLimit = Number(e.target.value); // 0 means "all"
+        renderCards();
+    });
+}
+
 // ── Render Cards ──────────────────────────────────────────────
 function renderCards() {
     const grid = document.getElementById('papers-grid');
@@ -220,61 +297,8 @@ function renderCards() {
         return;
     }
 
-    papers.forEach((paper, i) => {
-        const slug = JOURNAL_SLUGS[paper.journal] || 'default';
-        const accent = JOURNAL_ACCENTS[slug] || JOURNAL_ACCENTS.default;
-        const detailUrl = `paper.html?id=${paper.id}`;
-
-        const card = document.createElement('a');
-        card.className = 'paper-card';
-        card.href = detailUrl;
-        card.style.setProperty('--card-accent', accent);
-        card.style.setProperty('--accent-glow', hexToRgba(accent, 0.15));
-        card.style.animationDelay = `${i * 0.05}s`;
-
-        const stars = renderStars(paper.rating || 0);
-        const tagsHtml = (paper.tags || []).slice(0, 3).map(t =>
-            `<span class="tag" data-tag="${t}">${t}</span>`
-        ).join('');
-
-        const nlmBadge = paper.notebooklm_url
-            ? `<a class="nlm-badge" href="${paper.notebooklm_url}" target="_blank" rel="noopener" title="Open in NotebookLM">📓 Deep Notes</a>`
-            : '';
-
-        card.innerHTML = `
-      <div class="card-header">
-        <span class="journal-badge journal-${slug}">${paper.journal}</span>
-        <span class="card-year">${paper.year}</span>
-      </div>
-      <h2 class="card-title">${paper.title}</h2>
-      <p class="card-authors">${formatAuthors(paper.authors)}</p>
-      <p class="card-abstract">${paper.abstract || ''}</p>
-      <div class="card-footer">
-        <div class="card-tags">${tagsHtml}</div>
-        <div class="card-footer-right">
-          ${nlmBadge}
-          <div class="star-rating">${stars}</div>
-        </div>
-      </div>`;
-
-        // Tag click filters
-        card.querySelectorAll('.tag').forEach(tagEl => {
-            tagEl.addEventListener('click', (e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                activeTag = activeTag === tagEl.dataset.tag ? null : tagEl.dataset.tag;
-                renderCards();
-            });
-        });
-
-        // NLM badge — open notebook without navigating the card
-        const badge = card.querySelector('.nlm-badge');
-        if (badge) {
-            badge.addEventListener('click', (e) => e.stopPropagation());
-        }
-
-        grid.appendChild(card);
-    });
+    const visible = displayLimit > 0 ? papers.slice(0, displayLimit) : papers;
+    visible.forEach((paper, i) => grid.appendChild(buildCard(paper, i)));
 }
 
 // ── Helpers ───────────────────────────────────────────────────
