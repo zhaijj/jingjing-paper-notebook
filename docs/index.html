@@ -87,6 +87,21 @@
         <div class="filter-group" id="journal-filters"></div>
       </div>
 
+      <!-- SECOND CONTROLS ROW -->
+      <div class="controls controls-row2">
+        <button id="deep-notes-toggle" class="filter-chip deep-notes-chip" aria-pressed="false">
+          📓 Deep Notes Only
+        </button>
+        <div class="sort-wrap">
+          <label for="sort-select" class="sort-label">Sort by</label>
+          <select id="sort-select" class="sort-select" aria-label="Sort papers">
+            <option value="newest">Newest Added</option>
+            <option value="oldest">Oldest Added</option>
+            <option value="rating">Highest Rated</option>
+          </select>
+        </div>
+      </div>
+
       <!-- PAPER GRID -->
       <div class="papers-grid" id="papers-grid">
         <div class="no-results">

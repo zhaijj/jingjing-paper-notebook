@@ -40,6 +40,8 @@ let allPapers = [];
 let activeJournal = 'all';
 let activeTag = null;
 let searchQuery = '';
+let deepNotesOnly = false;
+let activeSort = 'newest'; // 'newest' | 'oldest' | 'rating'
 
 // ── Init ─────────────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', async () => {
@@ -50,6 +52,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     renderJournalFilters();
     renderCards();
     setupSearch();
+    setupDeepNotesToggle();
+    setupSortSelect();
 });
 
 function getBasePath() {
@@ -133,11 +137,47 @@ function setupSearch() {
     });
 }
 
+// ── Deep Notes Toggle ─────────────────────────────────────────
+function setupDeepNotesToggle() {
+    const btn = document.getElementById('deep-notes-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', () => {
+        deepNotesOnly = !deepNotesOnly;
+        btn.setAttribute('aria-pressed', deepNotesOnly);
+        btn.classList.toggle('active', deepNotesOnly);
+        renderCards();
+    });
+}
+
+// ── Sort Select ───────────────────────────────────────────────
+function setupSortSelect() {
+    const sel = document.getElementById('sort-select');
+    if (!sel) return;
+    sel.addEventListener('change', (e) => {
+        activeSort = e.target.value;
+        renderCards();
+    });
+}
+
+// ── Sort logic ────────────────────────────────────────────────
+function sortPapers(papers) {
+    return [...papers].sort((a, b) => {
+        if (activeSort === 'rating') {
+            return (b.rating || 0) - (a.rating || 0);
+        }
+        // Parse addedDate (YYYY-MM-DD) — fall back to year for papers without it
+        const dateA = a.addedDate ? new Date(a.addedDate).getTime() : new Date(`${a.year}-01-01`).getTime();
+        const dateB = b.addedDate ? new Date(b.addedDate).getTime() : new Date(`${b.year}-01-01`).getTime();
+        return activeSort === 'oldest' ? dateA - dateB : dateB - dateA;
+    });
+}
+
 // ── Filter logic ──────────────────────────────────────────────
 function filterPapers() {
     return allPapers.filter(p => {
         const journalMatch = activeJournal === 'all' || p.journal === activeJournal;
         const tagMatch = !activeTag || (p.tags && p.tags.includes(activeTag));
+        const deepMatch = !deepNotesOnly || !!p.notebooklm_url;
         const q = searchQuery;
 
         // Handle authors as string or array
@@ -148,7 +188,7 @@ function filterPapers() {
             authorsString.toLowerCase().includes(q) ||
             (p.tags && p.tags.join(' ').toLowerCase().includes(q)) ||
             (p.abstract && p.abstract.toLowerCase().includes(q));
-        return journalMatch && tagMatch && searchMatch;
+        return journalMatch && tagMatch && deepMatch && searchMatch;
     });
 }
 
@@ -157,7 +197,7 @@ function renderCards() {
     const grid = document.getElementById('papers-grid');
     if (!grid) return;
 
-    const papers = filterPapers();
+    const papers = sortPapers(filterPapers());
     grid.innerHTML = '';
 
     if (!papers.length) {
